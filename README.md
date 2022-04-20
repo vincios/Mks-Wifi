@@ -15,7 +15,7 @@ Like any other ESP8266 board, the firmware is composed by two parts:
 
 The original firmware functions are limited only to a TCP communication socket, only usable with a Cura plugin (see [this](https://www.mischianti.org/2021/11/24/mks-wifi-for-makerbase-robin-communication-protocol-and-cura-plugin-3/) article), and a simple firmware update page.
 
-> TODO: add a firmware update page image
+![orig_fw.png](/imgs/original_fw.png?raw=true "Original firmware page")
 
 The firmware doesn't have SPIFFS File System, so the installation needs only to flash the `MksWifi.bin` file.
 
@@ -56,7 +56,7 @@ Webpage method (only usable on a already flashed board):
 
 The BeePrint alternative firmware is based on the original Makerbase firmware, to which it adds a websocket feature, needed to create feature-rich dashboards.
 
-> TODO: Add MKS-WiFi-BeePrint-interface.jpg image
+![MKS-WiFi-BeePrint-interface](imgs\MKS-WiFi-BeePrint-interface.jpg?raw=true "BeePrint screenshot")
 
 > **NOTE**: BeePrint firmware only works on printers that use a Repetiter firmware (no Marlin).
 
@@ -77,7 +77,7 @@ The BeePrint alternative firmware is based on the original Makerbase firmware, t
 
 ESP3D is another alternative firmware, compatible with all printer board firmwares (see the [compatibility list](https://github.com/luc-github/ESP3D/wiki/Firmware--support)). However, there are some limitation with this firmware and Marlin (see below). 
 
-> TODO: add ESP3D image
+![QQSPro_ESP3D.png](imgs\QQSPro_ESP3D.png?raw=true "ESP3D screenshot")
 
 ### Marlin limitations
 Marlin has some limitation with the files management. Uploaded files must follow the [DOS 8.3](https://en.wikipedia.org/wiki/8.3_filename) format (max 8 characters for the name and max 3 characters for the extension). Files in the sdcard that doesn't follow this format will be displayed truncated into the ESP3D files list.
@@ -113,7 +113,7 @@ So, in this guide we will first flash an old pre-built ESP3D version, overwritin
 
     You can download it from the [repository](https://raw.githubusercontent.com/makerbase-mks/MKS-SGEN_L-V2/master/Tools/ESP3D%20firmware.rar) or find it into the `ESP3D/ESP3D firmware (with FS)`) folder.
 5. Click the `"Go to ESP3d interface"` button and complete the configuration wizard
-  > TODO: add the ESP-UI.png image
+    ![ESP-UI](imgs\ESP-UI.png "ESP3D Initial configuration")
 6.  Build the latest ESP3D version from source
     1. Clone the ESP3D [repository](https://github.com/luc-github/ESP3D) (make sure you are on the `2.1.x` branch)
     2. Open it with PlatformIO
@@ -123,6 +123,7 @@ So, in this guide we will first flash an old pre-built ESP3D version, overwritin
 
     **Note**: since the 2.1.x branch is no longer updated, you could also use the pre-builded version into the `ESP3D/ESP3D Precompiled V2.1.1` folder.
 7. Update the ESP3D firmware with the one built in step above
+   ![ESP_UI2](imgs\ESP_UI2.png "ESP3D Settings page")
    1. Go to the `<printer_ip>` page
    2. Select the ESP3D tab
    3. Click the update button (the orange one)
