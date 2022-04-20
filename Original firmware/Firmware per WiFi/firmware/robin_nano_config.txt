@@ -1,0 +1,302 @@
+#-------------------------------------------------------------
+############ 开机基本设置 #######################
+#机器类型
+#0:xyz机型，
+#1:corexy(x_motor = x+y, y_motor = x-y),
+#2:corexy(x_motor = x+y, y_motor = y-x),
+#3:delta机型
+
+>DRIVE_SYSTEM 		        3				#机器类型
+
+>cfg_multiple_language		1				#多国语言显示配置项(1:配置为多国语言,0:配置为字体图片显示)
+>cfg_language_type		3				#语言(1:简体中文;2:繁体中文;3:English)，此配置项只有在cfg_multiple_language为0时有效。
+
+>cfg_ui_set_maxtemp  		260				#挤出头显示屏设置最高温度,不应大于MAXTEMP值
+>cfg_ui_set_heated_bed_temp  	100				#热板显示屏设置最高温度，不应大于HEATED_BED_MAX_TEMP值
+
+>NUM_EXTRUDER 			1				#配置挤出头个数(1:单喷头；2:双喷头)
+>HAVE_HEATED_BED 		1				#1：使能热床  ,0：禁止热床
+
+>EXT0_TEMPSENSOR_TYPE 		1				#挤出头热阻类型，1:100k热敏；102：MAX31855热电偶
+>EXT1_TEMPSENSOR_TYPE 		1				#挤出头热阻类型，1:100k热敏；102：MAX31855热电偶
+>HEATED_BED_SENSOR_TYPE 	1				#热床热阻类型，1:100k热敏；
+
+>FEATURE_TWO_XSTEPPER		0				#双X轴设置，使用第二个挤出头E1的驱动(1:启用，0:不启用)
+>FEATURE_TWO_YSTEPPER		0				#双Y轴设置，使用第二个挤出头E1的驱动(1:启用，0:不启用)
+>FEATURE_TWO_ZSTEPPER		0				#双Z轴设置，使用第二个挤出头E1的驱动(1:启用，0:不启用)
+
+
+#限位开关高度差探测点的坐标
+>cfg_endstop_high_diff1:-80,-48
+>cfg_endstop_high_diff2:80,-48
+>cfg_endstop_high_diff3:0,90
+
+
+#G33指令delta机型调平半径范围
+>cfg_G33_delta_radius		86				#
+
+#臂长修正指令
+>cmd_delta_crazy:M665 X-1;M665 Y-1;M665 Z-1;
+>cmd_delta_normal:M665 X1;M665 Y1;M665 Z1;
+
+#-------------------------------------------------------------
+############ 功能设置 #######################
+>EXT1_X_OFFSET			0				#E1相对X轴原点偏移(mm)
+>EXT1_Y_OFFSET			0				#E1相对Y轴原点偏移(mm)
+
+>INVERT_X_DIR			0				#X步进电机方向
+>INVERT_Y_DIR			0				#Y步进电机方向	
+>INVERT_Z_DIR			0				#Z步进电机方向	
+>EXT0_INVERSE 			1				#E0步进电机方向
+>EXT1_INVERSE 			1				#E1步进电机方向
+
+>XAXIS_STEPS_PER_MM		80				#X每mm的脉冲值,如三角洲机型，XYZ脉冲值设为一样
+>YAXIS_STEPS_PER_MM		80				#Y每mm的脉冲值,如三角洲机型，XYZ脉冲值设为一样
+>ZAXIS_STEPS_PER_MM		80				#Z每mm的脉冲值,如三角洲机型，XYZ脉冲值设为一样
+>EXT0_STEPS_PER_MM		367				#E0每mm的脉冲值
+>EXT1_STEPS_PER_MM		367				#E1每mm的脉冲值
+
+>X_MAX_LENGTH 			105				#X最大行程
+>Y_MAX_LENGTH 			105				#Y最大行程
+>Z_MAX_LENGTH 			210				#Z最大行程
+>X_MIN_POS 			-105				#X最小行程
+>Y_MIN_POS 			-105				#Y最小行程
+>Z_MIN_POS 			0				#Z最小行程
+
+>MIN_EXTRUDER_TEMP		175				#主板挤出头最低温度，起保护作用
+>MAX_EXTRUDER_TEMP 		260				#主板挤出头最高温度，起保护作用	
+>MAX_HEATED_BED_TEMP 		110				#主板热板最高温度，起保护作用
+
+>HOMING_ORDER			1				#回零顺序(1:XYZ;2:XZY;3:YXZ;4:YZX;5:ZXY;6:ZYX)
+>X_HOME_DIR			1				#回零时方向(-1:最小方向，1:最大方向)
+>Y_HOME_DIR			1				#回零时方向(-1:最小方向，1:最大方向)
+>Z_HOME_DIR			1				#回零时方向(-1:最小方向，1:最大方向)
+
+>HOMING_FEEDRATE_X 		30				#X归零时的归零速度
+>HOMING_FEEDRATE_Y 		30				#Y归零时的归零速度
+>HOMING_FEEDRATE_Z 		30				#Z归零时的归零速度
+
+>ENDSTOP_X_MIN_INVERTING 	1				#X轴最小限位常开/常闭
+>ENDSTOP_Y_MIN_INVERTING 	1				#Y轴最小限位常开/常闭
+>ENDSTOP_Z_MIN_INVERTING 	1				#Z轴最小限位常开/常闭
+>ENDSTOP_X_MAX_INVERTING 	0				#X轴最大限位常开/常闭
+>ENDSTOP_Y_MAX_INVERTING 	0				#Y轴最大限位常开/常闭
+>ENDSTOP_Z_MAX_INVERTING 	0				#Z轴最大限位常开/常闭
+
+>MIN_HARDWARE_ENDSTOP_X 	0				#使能X轴最小限位
+>MIN_HARDWARE_ENDSTOP_Y 	0				#使能Y轴最小限位
+>MIN_HARDWARE_ENDSTOP_Z 	0				#使能Z轴最小限位
+>MAX_HARDWARE_ENDSTOP_X 	1				#使能X轴最大限位
+>MAX_HARDWARE_ENDSTOP_Y 	1				#使能Y轴最大限位
+>MAX_HARDWARE_ENDSTOP_Z 	1				#使能Z轴最大限位
+
+>min_software_endstop_x 	0				#使能X轴最小软限位
+>min_software_endstop_y 	0				#使能Y轴最小软限位
+>min_software_endstop_z 	0				#使能Z轴最小软限位
+>max_software_endstop_x 	1				#使能X轴最大软限位
+>max_software_endstop_y 	1				#使能Y轴最大软限位
+>max_software_endstop_z 	1				#使能Z轴最大软限位
+
+>MAX_FEEDRATE_X		200					#X运动的最大速度mm/s
+>MAX_FEEDRATE_Y 	200					#Y运动的最大速度mm/s
+>MAX_FEEDRATE_Z 	200					#Z运动的最大速度mm/s
+>MAX_FEEDRATE_EXT0 	200					#E0挤出机的最大速度mm/s
+>MAX_FEEDRATE_EXT1 	200					#E1挤出机的最大速度mm/s
+
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_X 1000			#X方向的打印最大加速度mm/s^2	
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Y 1000			#Y方向的打印最大加速度mm/s^2	
+>MAX_ACCELERATION_UNITS_PER_SQ_SECOND_Z 1000			#Z方式的打印最大加速度mm/s^2
+>MAX_ACCELERATION_EXT0 			1000			#E0挤出机的打印最大加速度mm/s^2
+>MAX_ACCELERATION_EXT1 			1000			#E1挤出机的打印最大加速度mm/s^2
+
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_X		1000	#X轴移动最大加速度mm/s^2	
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Y		1000	#Y轴移动最大加速度mm/s^2
+>MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Z		1000	#Z轴移动最大加速度mm/s^2
+
+#驱动电流
+>CURRENT_VREF_XY 		1000				#Default motor current for XY in mA，range (0~1000)
+>CURRENT_VREF_Z 		1000				#Default motor current for Z in mA，range (0~1000)
+>CURRENT_VREF_E 		1000				#Default motor current for E in mA，range (0~1000)
+
+>cfg_insert_det_module		0				#接入断电检测模块(1:mks 220det;0:mks pwc)
+
+>cfg_have_ups_device		0				#机器是否配备UPS电源(1:是;0:否)
+
+>cfg_print_over_auto_close	0				#打完关机配置(1:开启；0:关闭)。需搭配“打完关机模块”使用
+
+>cfg_filament_det_trigger_level		0			#断料检测接口的触发电平配置(1:高电平触发;0:低电平触发)
+
+>cfg_filament_load_length		600			#"换料"进料的长度
+>cfg_filament_load_speed		800			#"换料"进料速度配置(mm/min)
+>cfg_filament_load_limit_temperature	190			#"换料"进料最低限制温度配置
+
+>cfg_filament_unload_length		600			#"换料"退料的长度
+>cfg_filament_unload_speed		800			#"换料"退料速度配置(mm/min)
+>cfg_filament_unload_limit_temperature	190			#"换料"退料最低限制温度配置
+
+#调平模式配置
+>cfg_leveling_mode		1				#1:自动调平；0:手动调平
+
+#手动调平
+>cfg_point_number		5				#手动调平的个数:(可设3,4,5个点)
+
+#手动调平时的5个点的位置坐标
+>cfg_point1:50,50
+>cfg_point2:180,50
+>cfg_point3:180,180
+>cfg_point4:50,180
+>cfg_point5:150,150
+
+
+
+#三角洲参数
+>DELTA_MAX_RADIUS	105					#三角洲圆环半径
+>PRINTER_RADIUS		180.8					#打印机中心到垂直支撑杆的距离
+>DELTA_DIAGONAL_ROD	215					#三角洲杆长度
+>DELTA_FLOOR_SAFETY_MARGIN_MM	15				#调平边界安全距离
+
+>END_EFFECTOR_HORIZONTAL_OFFSET 40				#
+>CARRIAGE_HORIZONTAL_OFFSET 14.5				#
+>ROD_RADIUS 108.2							#
+
+#自动调平按钮指令配置
+>cfg_auto_leveling_cmd:M104 S0;G28;M206 T1 P893 S100;M206 T1 P895 S100;M206 T1 P897 S100;G333;G28;M500;G32 S2;G33;M500;G28;
+
+>FEATURE_Z_PROBE	1					#调平使能,0:禁止，1:使能
+>BED_LEVELING_METHOD	0					#调平方式,0:3点调平,1:多点调平,2:4点调平
+>Z_PROBE_ON_HIGH	0					#探针信号(0:低电平有效,常开;1:高电平有效，常闭)
+>Z_PROBE_HEIGHT		18					#探针和喷头的高度差
+>Z_PROBE_X1		-80					#预设的探测点坐标X1
+>Z_PROBE_Y1		-48					#预设的探测点坐标Y1
+>Z_PROBE_X2		80					#预设的探测点坐标X2
+>Z_PROBE_Y2		-48					#预设的探测点坐标Y2
+>Z_PROBE_X3		0					#预设的探测点坐标X3
+>Z_PROBE_Y3		85					#预设的探测点坐标Y3
+
+>cfg_leveling_z_speed		800				#调平移动Z速度配置(mm/min)
+>cfg_leveling_xy_speed		800				#调平移动XY速度配置(mm/min)
+
+>BED_LEVELING_GRID_SIZE 5					#调平间隔
+>Z_PROBE_SPEED		2					#Z轴探针速度
+>Z_PROBE_XY_SPEED	30					#XY速度
+
+>STEPPER_HIGH_DELAY	0					#脉冲保持时间配置(单位:us)
+
+
+#For Inverting Stepper Enable Pins
+>X_ENABLE_ON		0
+>Y_ENABLE_ON		0
+>Z_ENABLE_ON		0
+>EXT0_ENABLE_ON		0
+>EXT1_ENABLE_ON		0
+
+#挤出头加热控制类型.
+#- 0 = Simply switch on/off if temperature is reached.
+#- 1 = PID Temperature control.
+#- 3 = Dead-time control.
+
+>EXT0_HEAT_MANAGER			1			#
+>EXT1_HEAT_MANAGER			1			#
+
+#挤出头PID设置
+>EXT0_PID_INTEGRAL_DRIVE_MAX		230			#PID积分饱和最大值
+>EXT0_PID_INTEGRAL_DRIVE_MIN		40			#PID积分饱和最小值
+>EXT0_PID_P		24					#P值设置
+>EXT0_PID_I		0.88					#I值设置
+>EXT0_PID_D		80					#D值设置
+
+>EXT1_PID_INTEGRAL_DRIVE_MAX		230			#PID积分饱和最大值
+>EXT1_PID_INTEGRAL_DRIVE_MIN		40			#PID积分饱和最小值
+>EXT1_PID_P				24			#P值设置
+>EXT1_PID_I				0.88			#I值设置
+>EXT1_PID_D				80			#D值设置
+
+
+
+#-------------------------------------------------------------
+############ 功能定制 #######################
+
+#设置界面自定义功能1和2
+>setmenu_func1_display		1				#1:显示按钮，0:不显示按钮
+>setmenu_func2_display		0				#1:显示按钮，0:不显示按钮
+
+#每条指令必须用分号";"隔开
+>setmenu_func1:M84;
+>setmenu_func2:M81;
+
+>moreitem_pic_cnt		4				#"更多"按钮数量
+
+#按钮1~按钮7定制指令
+#每条指令必须用分号";"隔开
+#每个按钮设置指令最大必须小于200字节
+>moreitem_button1_cmd:M665 D-0.3;M500;
+
+>moreitem_button2_cmd:M665 D0.3;M500;
+
+>moreitem_button3_cmd:M665 R0.3;M500;
+
+>moreitem_button4_cmd:M665 R-0.3;M500;
+
+>moreitem_button5_cmd:G28 X0;G28 Y0;G28 Z0;
+
+>moreitem_button6_cmd:G28 X0;G28 Y0;G28 Z0;
+
+>moreitem_button7_cmd:G28 X0;G28 Y0;G28 Z0;
+
+#打印界面"更多"按钮数量
+>morefunc_cnt      2
+
+#按钮1~按钮6功能配置
+>morefunc1_cmd:M665 I0.1;
+>morefunc2_cmd:M665 I-0.1;
+>morefunc3_cmd:G28;
+>morefunc4_cmd:G28;
+>morefunc5_cmd:G28;
+>morefunc6_cmd:G28;
+
+#-------------------------------------------------------------
+######  显示效果定制（按键与LOGO定制请看说明书） #######
+
+>cfg_background_color		0x000000			#屏幕背景色
+
+>cfg_title_color		0xFFFFFF			#标题文字
+
+>cfg_state_background_color	0x000000			#温度等状态背景色
+
+>cfg_state_text_color		0xFFFFFF			#温度等状态文字颜色
+
+>cfg_filename_background_color	0x000000			#文件按钮上文件名字体背景色
+
+>cfg_filename_color		0xFFFFFF			#文件按钮上文件名字体颜色
+
+>cfg_printingstat_word_background_color		0x000000	#打印状态信息字体背景色
+
+>cfg_printingstat_word_color			0xFFFFFF	#打印状态信息字体颜色
+
+>cfg_BUTTON_3D_effects		0				#按钮3D效果(0:无,1:有)
+
+#-------------------------------------------------------------
+#一键预热设置挤出头温度
+>cfg_set_pla_nozzle_temp        210
+
+#一键预热设置热床温度
+>cfg_set_pla_bed_temp           50
+
+#--------------------------------------------------------------
+#版本信息配置
+>message_version:VERSION: 2.4
+>message_board:BOARD: MKS ROBIN_NANO
+>message_type:TYPE: FLSUN Q5
+
+#--------------------------------------------------------------
+#唤醒模式配置
+>cfg_Standby_mode		0			#是否开启唤醒功能（0：关闭，1：开启）
+>cfg_Standby_gap_time           600                     #设置进入休眠时间（单位：秒）
+#--------------------------------------------------------------
+
+#屏幕翻转180°(0:不翻转,0xEE:翻转)
+>cfg_screen_overturn_180:0xEE
+
+#使能wifi配置
+>cfg_enble_wifi     1			#是否开启wifi功能（0：关闭，1：开启）
+
